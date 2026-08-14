@@ -213,7 +213,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvLoginNewUser"
+            android:id="@+id/tvLoginCreateAccount"
             android:text="Create an account"
             android:textColor="#062AF6"
             android:textStyle="bold"
