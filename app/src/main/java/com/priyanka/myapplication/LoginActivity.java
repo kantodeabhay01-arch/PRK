@@ -24,10 +24,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.priyanka.myapplication.comman.Urls;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import cz.msebera.android.httpclient.Header;
 
 public class LoginActivity extends AppCompatActivity {
