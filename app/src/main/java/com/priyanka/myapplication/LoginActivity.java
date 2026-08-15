@@ -159,73 +159,73 @@ public class LoginActivity extends AppCompatActivity {
         params.put("username",etLoginUsername.getText().toString());
         params.put("password",etLoginPassword.getText().toString());
 
-        client.post(Urls.loginUserAPI,params,new JsonHttpResponseHandler()
-                {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        super.onSuccess(statusCode, headers, response);
+//        client.post(Urls.loginUserAPI,params,new JsonHttpResponseHandler()
+//                {
+//                    @Override
+//                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                        super.onSuccess(statusCode, headers, response);
+//
+//                        progressDialog.dismiss();
+//
+//                        try {
+//
+//                            String status = response.getString("success");
+//                            String message = response.getString("message");
+//
+//                            if(status.equals("1"))
+//                            {
+//                                Toast.makeText(LoginActivity.this,message , Toast.LENGTH_SHORT).show();
+//                                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+//                                editor.putBoolean("isLogin", true).commit();
+//                                editor.putString("username", etLoginUsername.getText().toString()).commit();
+//                                editor.commit();
+//                                startActivity(intent);
+//                                finishAffinity();
+//
+//                            }
+//                            else
+//                            {
+//                                Toast.makeText(LoginActivity.this,message,Toast.LENGTH_SHORT).show();
+//                            }
+//
+//                        } catch (JSONException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+//                        super.onFailure(statusCode, headers, throwable, errorResponse);
+//
+//                        progressDialog.dismiss();
+//                        Toast.makeText(LoginActivity.this,"Error :"+errorResponse,Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//
+//        );
+//    }
 
-                        progressDialog.dismiss();
-
-                        try {
-
-                            String status = response.getString("success");
-                            String message = response.getString("message");
-
-                            if(status.equals("1"))
-                            {
-                                Toast.makeText(LoginActivity.this,message , Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
-                                editor.putBoolean("isLogin", true).commit();
-                                editor.putString("username", etLoginUsername.getText().toString()).commit();
-                                editor.commit();
-                                startActivity(intent);
-                                finishAffinity();
-
-                            }
-                            else
-                            {
-                                Toast.makeText(LoginActivity.this,message,Toast.LENGTH_SHORT).show();
-                            }
-
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                        super.onFailure(statusCode, headers, throwable, errorResponse);
-
-                        progressDialog.dismiss();
-                        Toast.makeText(LoginActivity.this,"Error :"+errorResponse,Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-        );
-    }
-
-    @Override
-    public void onBackPressed()
-    {
-
-        if (doubleTap)
-        {
-            finishAffinity();
-        }
-        else
-        {
-            Toast.makeText(LoginActivity.this,"Double tap to exit",Toast.LENGTH_SHORT).show();
-            doubleTap = true;
-
-            new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    doubleTap = false;
-                }
-            }, 2000);
-        }
-
+//    @Override
+//    public void onBackPressed()
+//    {
+//
+//        if (doubleTap)
+//        {
+//            finishAffinity();
+//        }
+//        else
+//        {
+//            Toast.makeText(LoginActivity.this,"Double tap to exit",Toast.LENGTH_SHORT).show();
+//            doubleTap = true;
+//
+//            new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    doubleTap = false;
+//                }
+//            }, 2000);
+//        }
+//
     }
 
 }
