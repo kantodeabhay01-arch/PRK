@@ -1,102 +1,154 @@
 package com.priyanka.myapplication;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.priyanka.myapplication.comman.Urls;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
+
 public class Forget_Password_Activity extends AppCompatActivity {
 
-    EditText etUserName , etPassword , etConformPassword;
-    Button btnChange;
-    CheckBox cbShowPassword , cbHidePassword;
-    ProgressDialog progressDialog;
+    EditText etForgetPasswordUsername, etForgetPasswordNewPassword, etForgetPasswordConfirmPassword;
+    Button btnForgetPasswordReset;
+    TextView tvForgetPasswordBackToLogin, tvLoginUser;
 
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
 
+        etForgetPasswordUsername = findViewById(R.id.etForgetPasswordUsername);
+        etForgetPasswordNewPassword = findViewById(R.id.etForgetPasswordNewPassword);
+        etForgetPasswordConfirmPassword = findViewById(R.id.etForgetPasswordConfirmPassword);
+        btnForgetPasswordReset = findViewById(R.id.btnForgetPasswordReset);
 
+        tvForgetPasswordBackToLogin = findViewById(R.id.tvForgetPasswordBackToLogin);
+        tvLoginUser = findViewById(R.id.tvLoginUser);
 
-            etUserName=findViewById(R.id.etUserName);
-            etPassword=findViewById(R.id.etPassword);
-            etConformPassword=findViewById(R.id.etConformPassword);
-            btnChange=findViewById(R.id.btnChange);
-            cbHidePassword=findViewById(R.id.cbHidePassword);
-            cbShowPassword=findViewById(R.id.cbShowPassword);
+        tvLoginUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Forget_Password_Activity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
-            btnChange.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    btnChange.animate().setDuration(100).scaleY(0.9f).scaleX(0.9f).withEndAction(
-                            ()->btnChange.animate().scaleX(1).scaleY(1).setDuration(100));
-                    if (etUserName.getText().toString().isEmpty()){
-                        etUserName.setError("Please Enter Your UserName");
-                    } else if (etUserName.getText().toString().length()<8) {
-                        etUserName.setError("User Name must have 8 characters");
-                    } else if (!etUserName.getText().toString().matches(".*[A-Z].*")) {
-                        etUserName.setError("Your User Name Must have 1 Upper Case");
-                    }else if (!etUserName.getText().toString().matches(".*[a-z].*")) {
-                        etUserName.setError("Your User Name Must have 1 Lower Case");
-                    }else if (!etUserName.getText().toString().matches(".*[0-9].*")) {
-                        etUserName.setError("Your User Name Must have 1 Degit");
-                    }else if (!etUserName.getText().toString().matches(".*[!,@,#,$,&,*].*")) {
-                        etUserName.setError("User Name must have 1 Special Symbol");
-                    } else if (etPassword.getText().toString().isEmpty()) {
-                        etPassword.setError("Please Enter Your New Password");
-                    } else if (etPassword.getText().toString().length()<8) {
-                        etPassword.setError("Password must have 8 characters");
-                    } else if (!etPassword.getText().toString().matches(".*[A-Z].*")) {
-                        etPassword.setError("Password must have 1 Upper case");
-                    }  else if (!etPassword.getText().toString().matches(".*[a-z].*")) {
-                        etPassword.setError("Password must have 1 Lower case");
-                    }else if (!etPassword.getText().toString().matches(".*[0-9].*")) {
-                        etPassword.setError("Password must have 1 Degit");
-                    }else if (!etPassword.getText().toString().matches(".*[!,@,#,$,&,*].*")) {
-                        etPassword.setError("Password must have 1 Special Symbol");
-                    } else if (etConformPassword.getText().toString().equals(etPassword)) {
-                        etConformPassword.setError("Password and Conform Password must be Same");
-                    }else {
-                        progressDialog=new ProgressDialog(Forget_Password_Activity.this);
-                        progressDialog.setTitle("Please Wait");
-                        progressDialog.show();
-                    }
+        tvForgetPasswordBackToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Forget_Password_Activity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btnForgetPasswordReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(etForgetPasswordUsername.getText().toString().isEmpty())
+                {
+                    etForgetPasswordUsername.setError("Please enter username");
+                } else if (etForgetPasswordUsername.getText().toString().length()<8)
+                {
+                    etForgetPasswordUsername.setError("Username must be greater then 8");
                 }
-            });
-            cbShowPassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(@NonNull CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked){
-                        etConformPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    }
-                    else {
-                        etConformPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    }
+                else if(etForgetPasswordNewPassword.getText().toString().isEmpty())
+                {
+                    etForgetPasswordNewPassword.setError("Please enter new password");
+                } else if (etForgetPasswordNewPassword.getText().toString().length()<8)
+                {
+                    etForgetPasswordNewPassword.setError("New password must be greater then 8");
                 }
-            });
-            cbHidePassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(@NonNull CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked){
-                        etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    }
-                    else {
-                        etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    }
+                else if(etForgetPasswordConfirmPassword.getText().toString().isEmpty())
+                {
+                    etForgetPasswordConfirmPassword.setError("Please enter confirm password");
+                } else if (etForgetPasswordConfirmPassword.getText().toString().length()<8)
+                {
+                    etForgetPasswordConfirmPassword.setError("Confirm password must be greater then 8");
                 }
-            });
-        }
+                else if (!etForgetPasswordNewPassword.getText().toString()
+                        .equals(etForgetPasswordConfirmPassword.getText().toString())) {
+                    etForgetPasswordConfirmPassword.setError("New password and confirm password doesn't match.");
+                }
+                else
+                {
+                    progressDialog = new ProgressDialog(Forget_Password_Activity.this);
+                    progressDialog.setTitle("Forget Password");
+                    progressDialog.setMessage("Please Wait");
+                    progressDialog.setCanceledOnTouchOutside(true);
+                    progressDialog.show();
+
+                    forgetPassword();
+                }
+            }
+        });
     }
+
+    private void forgetPassword()
+    {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        params.put("username",etForgetPasswordUsername.getText().toString());
+        params.put("password",etForgetPasswordNewPassword.getText().toString());
+
+        client.post(Urls.forgetPassword,params,new JsonHttpResponseHandler()
+                {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        super.onSuccess(statusCode, headers, response);
+
+                        progressDialog.dismiss();
+                        try {
+
+                            String status = response.getString("success");
+                            String message = response.getString("message");
+
+                            if(status.equals("1"))
+                            {
+                                Toast.makeText(Forget_Password_Activity.this, message, Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(Forget_Password_Activity.this, message, Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                        super.onFailure(statusCode, headers, throwable, errorResponse);
+
+                        progressDialog.dismiss();
+                        Toast.makeText(Forget_Password_Activity.this,"Server error",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Forget_Password_Activity.this,LoginActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+    }
+}
