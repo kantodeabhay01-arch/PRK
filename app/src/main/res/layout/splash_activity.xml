@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B1F33"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".splash_activity">
+
+
+    <ImageView
+        android:id="@+id/ivAppLogo"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:src="@drawable/app_logo"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="8dp"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/appNameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/ivAppLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <TextView
+            android:id="@+id/tvEdu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edu"
+            android:textColor="#66B3FF"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:includeFontPadding="false"/>
+
+        <TextView
+            android:id="@+id/tvReach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reach"
+            android:textColor="#FF9F43"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:includeFontPadding="false"/>
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/tvTagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Empowering Learning, Together"
+        android:textColor="#D6E4F0"
+        android:textSize="15sp"
+        android:fontFamily="sans-serif"
+        android:includeFontPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/appNameLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        app:lottie_rawRes="@raw/loading"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_speed="1.0"
+        android:scaleType="centerInside"/>
+
+</LinearLayout>
