@@ -53,13 +53,13 @@ public class LoginActivity extends AppCompatActivity {
 //        preferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
 //        editor = preferences.edit();
 
-        if(preferences.getBoolean("isLogin",false))
-        {
-            Intent i = new Intent(LoginActivity.this,HomeActivity.class);
-            startActivity(i);
-            finish();
-
-        }
+//        if(preferences.getBoolean("isLogin",false))
+//        {
+//            Intent i = new Intent(LoginActivity.this,HomeActivity.class);
+//            startActivity(i);
+//            finish();
+//
+//        }
 
         etLoginUsername = findViewById(R.id.etLoginUsername);
         etLoginPassword = findViewById(R.id.etLoginPassword);
