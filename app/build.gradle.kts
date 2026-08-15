@@ -41,7 +41,15 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.ext.junit)
-    implementation("com.airbnb.android:lottie:6.6.7")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.cardview:cardview:1.0.0")
+
+    implementation("com.airbnb.android:lottie:6.4.0")
+
+    implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
+
+    implementation("com.loopj.android:android-async-http:1.4.11")
+
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 }
