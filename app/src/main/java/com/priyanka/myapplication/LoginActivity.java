@@ -39,10 +39,10 @@ public class LoginActivity extends AppCompatActivity {
     AppCompatButton btnLogin;
     TextView tvLoginNewUser, tvForgetPassword;
 
-    ProgressDialog progressDialog;
-
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
+//    ProgressDialog progressDialog;
+//
+//    SharedPreferences preferences;
+//    SharedPreferences.Editor editor;
 
 
     @Override
@@ -107,13 +107,13 @@ public class LoginActivity extends AppCompatActivity {
 //                    startActivity(intent);
 //                    finish();
 
-                    progressDialog = new ProgressDialog(LoginActivity.this);
-                    progressDialog.setTitle("Login User");
-                    progressDialog.setMessage("Please wait");
-                    progressDialog.setCanceledOnTouchOutside(true);
-                    progressDialog.show();
+//                    progressDialog = new ProgressDialog(LoginActivity.this);
+//                    progressDialog.setTitle("Login User");
+//                    progressDialog.setMessage("Please wait");
+//                    progressDialog.setCanceledOnTouchOutside(true);
+//                    progressDialog.show();
 
-                    loginUser();
+//                    loginUser();
                 }
             }
         });
@@ -151,13 +151,13 @@ public class LoginActivity extends AppCompatActivity {
 //        });
     }
 
-    private void loginUser()
-    {
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-
-        params.put("username",etLoginUsername.getText().toString());
-        params.put("password",etLoginPassword.getText().toString());
+//    private void loginUser()
+//    {
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        RequestParams params = new RequestParams();
+//
+//        params.put("username",etLoginUsername.getText().toString());
+//        params.put("password",etLoginPassword.getText().toString());
 
 //        client.post(Urls.loginUserAPI,params,new JsonHttpResponseHandler()
 //                {
@@ -226,6 +226,5 @@ public class LoginActivity extends AppCompatActivity {
 //            }, 2000);
 //        }
 //
-    }
 
 }
