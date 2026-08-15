@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RegistrationActivity2 extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     EditText etName, etEmail, etMobile;
     EditText etPassword, etConfirmPassword, etCity;
@@ -51,7 +51,7 @@ public class RegistrationActivity2 extends AppCompatActivity {
 
         tvLogin.setOnClickListener(v -> {
             Intent intent = new Intent(
-                    RegistrationActivity2.this,
+                    RegistrationActivity.this,
                     LoginActivity.class
             );
             startActivity(intent);
@@ -156,7 +156,7 @@ public class RegistrationActivity2 extends AppCompatActivity {
         ).show();
 
         Intent intent = new Intent(
-                RegistrationActivity2.this,
+                RegistrationActivity.this,
                 LoginActivity.class
         );
 
