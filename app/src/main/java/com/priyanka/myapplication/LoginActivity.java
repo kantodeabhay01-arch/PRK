@@ -19,14 +19,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 //import androidx.preference.PreferenceManager;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-import com.priyanka.myapplication.comman.Urls;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import cz.msebera.android.httpclient.Header;
+//import com.loopj.android.http.AsyncHttpClient;
+//import com.loopj.android.http.JsonHttpResponseHandler;
+//import com.loopj.android.http.RequestParams;
+//import com.priyanka.myapplication.comman.Urls;
+//
+//import org.json.JSONException;
+//import org.json.JSONObject;
+//import cz.msebera.android.httpclient.Header;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText etLoginPassword;
     CheckBox cbLoginShowHidePassword;
     AppCompatButton btnLogin;
-    TextView tvLoginNewUser, tvForgetPassword;
+    TextView tvLoginCreateAccount, tvForgetPassword;
 
 //    ProgressDialog progressDialog;
 //
@@ -117,7 +117,15 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         cbLoginShowHidePassword = findViewById(R.id.cbLoginShowHidePassword);
-        tvLoginNewUser = findViewById(R.id.tvLoginNewUser);
+        tvLoginCreateAccount = findViewById(R.id.tvLoginCreateAccount);
+        tvLoginCreateAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,RegistrationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         cbLoginShowHidePassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -130,13 +138,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-//        tvForgetPassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(LoginActivity.this,ForgetPasswordActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        tvForgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,ForgetPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
 //
 //
 //        tvLoginNewUser.setOnClickListener(new View.OnClickListener() {
