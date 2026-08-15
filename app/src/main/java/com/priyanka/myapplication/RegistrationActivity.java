@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    EditText etName, etEmail, etMobile;
+    EditText etName, etEmail, etMobile, etUsername;
     EditText etPassword, etConfirmPassword, etCity;
 
     RadioGroup rgRole;
@@ -36,6 +36,7 @@ public class RegistrationActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etMobile = findViewById(R.id.etMobile);
         etPassword = findViewById(R.id.etPassword);
+        etUsername = findViewById(R.id.etRegistrationUsername);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
         etCity = findViewById(R.id.etCity);
 
@@ -64,6 +65,7 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = etEmail.getText().toString().trim();
         String mobile = etMobile.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
+        String username = etUsername.getText().toString().trim();
         String confirmPassword = etConfirmPassword.getText().toString().trim();
         String city = etCity.getText().toString().trim();
 

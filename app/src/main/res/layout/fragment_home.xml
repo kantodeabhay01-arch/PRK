@@ -1,14 +1,570 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
     tools:context=".fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="Hello, Priyanka ! "
+                android:layout_marginTop="2dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Your voice shapes the future of Indian education."
+                android:layout_marginLeft="25dp"
+                />
+
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/isHomeFragmentImageSlider"
+                android:layout_width="350dp"
+                android:layout_height="190dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/image_slider"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="35"
+                app:iss_delay="3000"
+                app:iss_period="3000"
+                app:iss_selected_dot="@drawable/dotshape"
+                app:iss_text_align="CENTER"
+                app:iss_text_color="#3E016F"
+                app:iss_unselected_dot="@drawable/default_selected_dot" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="QUICK ACTIONS"
+                android:textSize="16dp"
+                android:layout_marginTop="25dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="15dp"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="330dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="15dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="45dp"
+                            android:text="Report Issue"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/report_issue" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="53dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/announce" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="45dp"
+                            android:text="Announce"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="330dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="15dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/scholarship" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="45dp"
+                            android:text="Scholarships"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="53dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="15dp"
+                        android:background="@color/white"
+                        android:backgroundTint="@null"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/contact_home" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="45dp"
+                            android:textColor="@color/black"
+                            android:text="Contact"
+                            android:textStyle="bold" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="59dp"
+                    android:layout_marginBottom="15dp"
+                    android:textColor="@color/black"
+                    android:text="RECENT COMPLAINTS"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="85dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="View All"
+                    android:textColor="#3D5AFE"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="380dp"
+                android:background="@color/white"
+                android:backgroundTint="@null"
+                android:layout_height="100dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="16dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/circle_background"
+                        android:padding="10dp"
+                        android:src="@drawable/house" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Infrastructure Leak \nin Block C"
+                            android:textSize="17dp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="15dp"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ticket #EV-8921 • 2 hours ago"
+                            android:textSize="15dp"
+                            android:textColor="#6F6F6F"
+                            android:gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/progress"
+                        android:padding="10dp"
+                        android:text="In-Progress"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="20dp"
+                        />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="380dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="15dp"
+                app:cardBackgroundColor="@color/white"
+                android:backgroundTint="@null"
+                app:cardElevation="16dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/circle_background"
+                        android:padding="10dp"
+                        android:src="@drawable/wifi" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Library Wi-Fi\n Connectivity Issue"
+                            android:textSize="17dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="15dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ticket #EV-8840 • 1 day ago"
+                            android:textSize="15dp"
+                            android:gravity="center"
+                            android:textColor="#6F6F6F"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/resolved"
+                        android:padding="10dp"
+                        android:layout_marginLeft="25dp"
+                        android:text="Resolved"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="25dp"
+                        />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="59dp"
+                android:layout_marginBottom="15dp"
+                android:text="RECENT COMPLAINTS"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="270dp"
+                        android:layout_height="260dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardBackgroundColor="#E2E1E1"
+                        app:cardElevation="16dp"
+                        android:backgroundTint="@null">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="230dp"
+                                android:layout_height="150dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="20dp"
+                                android:src="@drawable/scholarship_image" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="10dp"
+                                android:text="SCHOLARSHIP"
+                                android:textColor="#3D5AFE"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:text="Reliance Merit Scholarship\n 2024 applications are now open...."
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="270dp"
+                        android:layout_height="260dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        app:cardBackgroundColor="#E2E1E1"
+                        app:cardCornerRadius="20dp"
+                        android:layout_marginBottom="15dp"
+                        app:cardElevation="16dp"
+                        android:backgroundTint="@null">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="230dp"
+                                android:layout_height="150dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="20dp"
+                                android:src="@drawable/tech_image" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="10dp"
+                                android:text="TECH UPDATE"
+                                android:textColor="#3D5AFE"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:text="New Digital Repository for Open\n Learning Resources launched...."
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="270dp"
+                        android:layout_height="260dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardBackgroundColor="#E2E1E1"
+                        app:cardElevation="16dp"
+                        android:backgroundTint="@null">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="230dp"
+                                android:layout_height="150dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="20dp"
+                                android:src="@drawable/internship_image" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="10dp"
+                                android:text="INTERNSHIP"
+                                android:textColor="#3D5AFE"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:text="New internship opportunities for \n students are now available...."
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="270dp"
+                        android:layout_height="260dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardBackgroundColor="#E2E1E1"
+                        app:cardElevation="16dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginRight="40dp"
+                        android:backgroundTint="@null">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="230dp"
+                                android:layout_height="150dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="20dp"
+                                android:src="@drawable/ai_in_education_image" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginTop="10dp"
+                                android:text="AI IN EDUCATION"
+                                android:textColor="#3D5AFE"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:text="AI tools are transforming\n the future of learning and education...."
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

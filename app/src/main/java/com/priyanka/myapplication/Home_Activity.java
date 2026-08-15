@@ -32,7 +32,7 @@ public class Home_Activity extends AppCompatActivity
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Home");
+        setTitle("EduReach");
 
         // Bottom Navigation
         bottomNavigationView = findViewById(R.id.HomeBottomNav);
