@@ -151,7 +151,6 @@ public class LoginActivity extends AppCompatActivity {
 //        });
     }
 
-//    private void loginUser()
 //    {
 //        AsyncHttpClient client = new AsyncHttpClient();
 //        RequestParams params = new RequestParams();
