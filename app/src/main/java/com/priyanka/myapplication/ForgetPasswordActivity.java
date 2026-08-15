@@ -9,22 +9,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
-//import com.loopj.android.http.AsyncHttpClient;
-//import com.loopj.android.http.JsonHttpResponseHandler;
-//import com.loopj.android.http.RequestParams;
-//import com.priyanka.myapplication.comman.Urls;
-//
-//import org.json.JSONObject;
-//
-//import cz.msebera.android.httpclient.Header;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.priyanka.myapplication.comman.Urls;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 public class ForgetPasswordActivity extends AppCompatActivity {
 
     EditText etForgetPasswordUsername, etForgetPasswordNewPassword, etForgetPasswordConfirmPassword;
     Button btnForgetPasswordReset;
-    TextView tvForgetPasswordBackToLogin, tvLoginNow;
+    TextView tvForgetPasswordBackToLogin, tvLoginUser;
 
     ProgressDialog progressDialog;
     @Override
@@ -38,9 +43,9 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         btnForgetPasswordReset = findViewById(R.id.btnForgetPasswordReset);
 
         tvForgetPasswordBackToLogin = findViewById(R.id.tvForgetPasswordBackToLogin);
-        tvLoginNow = findViewById(R.id.tvLoginNow);
+        tvLoginUser = findViewById(R.id.tvLoginUser);
 
-        tvLoginNow.setOnClickListener(new View.OnClickListener() {
+        tvLoginUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ForgetPasswordActivity.this,LoginActivity.class);
@@ -95,55 +100,55 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                     progressDialog.setCanceledOnTouchOutside(true);
                     progressDialog.show();
 
-//                    forgetPassword();
+                    forgetPassword();
                 }
             }
         });
     }
 
-//    private void forgetPassword()
-//    {
-//        AsyncHttpClient client = new AsyncHttpClient();
-//        RequestParams params = new RequestParams();
-//
-//        params.put("username",etForgetPasswordUsername.getText().toString());
-//        params.put("password",etForgetPasswordNewPassword.getText().toString());
-//
-//        client.post(Urls.forgetPassword,params,new JsonHttpResponseHandler()
-//                {
-//                    @Override
-//                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-//                        super.onSuccess(statusCode, headers, response);
-//
-//                        progressDialog.dismiss();
-//                        try {
-//
-//                            String status = response.getString("success");
-//                            String message = response.getString("message");
-//
-//                            if(status.equals("1"))
-//                            {
-//                                Toast.makeText(ForgetPasswordActivity.this, message, Toast.LENGTH_SHORT).show();
-//                            }
-//                            else {
-//                                Toast.makeText(ForgetPasswordActivity.this, message, Toast.LENGTH_SHORT).show();
-//                            }
-//
-//                        } catch (Exception e) {
-//                            throw new RuntimeException(e);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-//                        super.onFailure(statusCode, headers, throwable, errorResponse);
-//
-//                        progressDialog.dismiss();
-//                        Toast.makeText(ForgetPasswordActivity.this,"Server error",Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(ForgetPasswordActivity.this,LoginActivity.class);
-//                        startActivity(intent);
-//                    }
-//                }
-//        );
-//    }
+    private void forgetPassword()
+    {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        params.put("username",etForgetPasswordUsername.getText().toString());
+        params.put("password",etForgetPasswordNewPassword.getText().toString());
+
+        client.post(Urls.forgetPassword,params,new JsonHttpResponseHandler()
+                {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        super.onSuccess(statusCode, headers, response);
+
+                        progressDialog.dismiss();
+                        try {
+
+                            String status = response.getString("success");
+                            String message = response.getString("message");
+
+                            if(status.equals("1"))
+                            {
+                                Toast.makeText(ForgetPasswordActivity.this, message, Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(ForgetPasswordActivity.this, message, Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                        super.onFailure(statusCode, headers, throwable, errorResponse);
+
+                        progressDialog.dismiss();
+                        Toast.makeText(ForgetPasswordActivity.this,"Server error",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ForgetPasswordActivity.this,LoginActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+    }
 }

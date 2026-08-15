@@ -1,168 +1,180 @@
 package com.priyanka.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.priyanka.myapplication.comman.Urls;
+
+import cz.msebera.android.httpclient.Header;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 public class RegistrationActivity extends AppCompatActivity {
 
-    EditText etName, etEmail, etMobile, etUsername;
-    EditText etPassword, etConfirmPassword, etCity;
+    boolean doubleTap = false;
+    EditText etRegistrationName, etRegistrationMobileNo, etRegistrationEmail,
+            etRegistrationUsername, etRegistrationPassword, etRegistrationConfirmPassword;
+    Button btnRegistration;
 
-    RadioGroup rgRole;
-    RadioButton rbLearner, rbVolunteer;
-
-    CheckBox cbTerms;
-    Button btnRegister;
-    TextView tvLogin;
+    TextView tvLoginUser;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_registration2);
 
-        etName = findViewById(R.id.etName);
-        etEmail = findViewById(R.id.etEmail);
-        etMobile = findViewById(R.id.etMobile);
-        etPassword = findViewById(R.id.etPassword);
-        etUsername = findViewById(R.id.etRegistrationUsername);
-        etConfirmPassword = findViewById(R.id.etConfirmPassword);
-        etCity = findViewById(R.id.etCity);
+        etRegistrationName = findViewById(R.id.etRegistrationName);
+        etRegistrationMobileNo = findViewById(R.id.etRegistrationMobileNo);
+        etRegistrationEmail = findViewById(R.id.etRegistrationEmail);
+        etRegistrationUsername = findViewById(R.id.etRegistrationUsername);
+        etRegistrationPassword = findViewById(R.id.etRegistrationPassword);
+        etRegistrationConfirmPassword = findViewById(R.id.etRegistrationConfirmPassword);
 
-        rgRole = findViewById(R.id.rgRole);
-        rbLearner = findViewById(R.id.rbLearner);
-        rbVolunteer = findViewById(R.id.rbVolunteer);
+        btnRegistration = findViewById(R.id.btnRegistration);
 
-        cbTerms = findViewById(R.id.cbTerms);
-        btnRegister = findViewById(R.id.btnRegister);
-        tvLogin = findViewById(R.id.tvLogin);
+        tvLoginUser = findViewById(R.id.tvLoginUser);
 
-        btnRegister.setOnClickListener(v -> registerUser());
+        tvLoginUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
-        tvLogin.setOnClickListener(v -> {
-            Intent intent = new Intent(
-                    RegistrationActivity.this,
-                    LoginActivity.class
-            );
-            startActivity(intent);
+
+        btnRegistration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = etRegistrationName.getText().toString();
+                String mobile = etRegistrationMobileNo.getText().toString();
+                String email = etRegistrationEmail.getText().toString();
+                String username = etRegistrationUsername.getText().toString();
+                String password = etRegistrationPassword.getText().toString();
+                String confirmPassword = etRegistrationConfirmPassword.getText().toString();
+
+                if (name.isEmpty()) {
+                    etRegistrationName.setError("Please enter name");
+                } else if (mobile.isEmpty()) {
+                    etRegistrationMobileNo.setError("Please enter mobile number");
+                } else if (mobile.length() != 10) {
+                    etRegistrationMobileNo.setError("Mobile number length must be 10");
+                } else if (email.isEmpty()) {
+                    etRegistrationEmail.setError("Please enter Email Id");
+                } else if (!email.contains("@") || !email.contains(".com")) {
+                    etRegistrationEmail.setError("Please enter valid Email Id");
+                } else if (username.isEmpty()) {
+                    etRegistrationUsername.setError("Please enter username");
+                } else if (username.length() < 8) {
+                    etRegistrationUsername.setError("Username must be at least 8 characters");
+                } else if (!username.matches(".*[A-Z].*")) {
+                    etRegistrationUsername.setError("Username must contain 1 uppercase letter");
+                } else if (!username.matches(".*[a-z].*")) {
+                    etRegistrationUsername.setError("Username must contain 1 lowercase letter");
+                } else if (!username.matches(".*[0-9].*")) {
+                    etRegistrationUsername.setError("Username must contain 1 number");
+                } else if (!username.matches(".*[@,#,$,%,&,*].*")) {
+                    etRegistrationUsername.setError("Username must contain 1 special symbol");
+                } else if (password.isEmpty()) {
+                    etRegistrationPassword.setError("Please enter Password");
+                } else if (password.length() < 8) {
+                    etRegistrationPassword.setError("Password must be at least 8 characters");
+                } else if (!password.matches(".*[A-Z].*")) {
+                    etRegistrationPassword.setError("Password must contain 1 uppercase letter");
+                } else if (!password.matches(".*[a-z].*")) {
+                    etRegistrationPassword.setError("Password must contain 1 lowercase letter");
+                } else if (!password.matches(".*[0-9].*")) {
+                    etRegistrationPassword.setError("Password must contain 1 number");
+                } else if (!password.matches(".*[@,#,$,%,&,*].*")) {
+                    etRegistrationPassword.setError("Password must contain 1 special symbol");
+                } else if (!password.equals(confirmPassword)) {
+                    etRegistrationConfirmPassword.setError("Passwords do not match");
+                } else
+                {
+//                    Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+//                    finish(); // Go back to Login
+//                    Intent intent = new Intent(RegistrationActivity.this, HomeActivity.class);
+//                    startActivity(intent);
+//                    finish();
+
+                    progressDialog = new ProgressDialog(RegistrationActivity.this);
+                    progressDialog.setTitle("Registration");
+                    progressDialog.setMessage("Please wait");
+                    progressDialog.show();
+                    registerUser();
+
+                }
+            }
         });
     }
 
     private void registerUser() {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
 
-        String name = etName.getText().toString().trim();
-        String email = etEmail.getText().toString().trim();
-        String mobile = etMobile.getText().toString().trim();
-        String password = etPassword.getText().toString().trim();
-        String username = etUsername.getText().toString().trim();
-        String confirmPassword = etConfirmPassword.getText().toString().trim();
-        String city = etCity.getText().toString().trim();
+        params.put("name", etRegistrationName.getText().toString());
+        params.put("mobile", etRegistrationMobileNo.getText().toString());
+        params.put("email", etRegistrationEmail.getText().toString());
+        params.put("username", etRegistrationUsername.getText().toString());
+        params.put("password", etRegistrationPassword.getText().toString());
 
-        int selectedRoleId = rgRole.getCheckedRadioButtonId();
+        client.post(Urls.registerUserAPI, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                progressDialog.dismiss();
+                try {
+                    String status = response.getString("success");
+                    String message = response.getString("message");
+                    if (status.equals("1")) {
+                        Toast.makeText(RegistrationActivity.this, "Registration Success!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(RegistrationActivity.this,LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(RegistrationActivity.this, message, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(RegistrationActivity.this, "JSON Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
 
-        if (TextUtils.isEmpty(name)) {
-            etName.setError("Enter your name");
-            etName.requestFocus();
-            return;
-        }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                progressDialog.dismiss();
 
-        if (TextUtils.isEmpty(email)) {
-            etEmail.setError("Enter your email");
-            etEmail.requestFocus();
-            return;
-        }
+                String errorMsg = (throwable != null) ? throwable.getMessage() : "Unknown Error";
+                Toast.makeText(RegistrationActivity.this, "Network Error: " + errorMsg, Toast.LENGTH_LONG).show();
+            }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            etEmail.setError("Enter a valid email");
-            etEmail.requestFocus();
-            return;
-        }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                progressDialog.dismiss();
+                Toast.makeText(RegistrationActivity.this, "Server Error: " + responseString, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
-        if (TextUtils.isEmpty(mobile)) {
-            etMobile.setError("Enter mobile number");
-            etMobile.requestFocus();
-            return;
-        }
-
-        if (mobile.length() != 10) {
-            etMobile.setError("Enter a valid 10-digit mobile number");
-            etMobile.requestFocus();
-            return;
-        }
-
-        if (TextUtils.isEmpty(password)) {
-            etPassword.setError("Enter password");
-            etPassword.requestFocus();
-            return;
-        }
-
-        if (password.length() < 6) {
-            etPassword.setError("Password must be at least 6 characters");
-            etPassword.requestFocus();
-            return;
-        }
-
-        if (!password.equals(confirmPassword)) {
-            etConfirmPassword.setError("Passwords do not match");
-            etConfirmPassword.requestFocus();
-            return;
-        }
-
-        if (selectedRoleId == -1) {
-            Toast.makeText(
-                    this,
-                    "Please select Learner or Volunteer",
-                    Toast.LENGTH_SHORT
-            ).show();
-            return;
-        }
-
-        String role;
-
-        if (selectedRoleId == R.id.rbVolunteer) {
-            role = "Volunteer";
-        } else {
-            role = "Learner";
-        }
-
-        if (TextUtils.isEmpty(city)) {
-            etCity.setError("Enter your city");
-            etCity.requestFocus();
-            return;
-        }
-
-        if (!cbTerms.isChecked()) {
-            Toast.makeText(
-                    this,
-                    "Please accept Terms & Conditions",
-                    Toast.LENGTH_SHORT
-            ).show();
-            return;
-        }
-
-        Toast.makeText(
-                this,
-                "Registration Successful!",
-                Toast.LENGTH_LONG
-        ).show();
-
-        Intent intent = new Intent(
-                RegistrationActivity.this,
-                LoginActivity.class
-        );
-
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
 }
+

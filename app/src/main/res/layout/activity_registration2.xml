@@ -1,252 +1,541 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationActivity"
-    android:background="@color/blue">
-
+    android:fillViewport="true"
+    android:background="#ffffff"
+    tools:context=".RegistrationActivity">
     <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:background="#ffffff"
+        tools:context=".RegistrationActivity">
 
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+        <androidx.cardview.widget.CardView
+            android:layout_width="365dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            android:layout_marginTop="40dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_education"
-            android:contentDescription="EduReach Logo" />
+            app:cardBackgroundColor="#FFFFFF">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:text="EduReach"
-            android:textColor="#1565C0"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:text="Learn • Volunteer • Empower"
-            android:textColor="#607D8B"
-            android:textSize="14sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Create Account"
+                    android:textSize="28sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textStyle="bold"
+                    />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Create Account"
-            android:textColor="#263238"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Fill in your details to get started with \nEduVoice."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Full Name"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:drawableLeft="@drawable/person"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etRegistrationName"
+                    android:hint="e.g., Abhay Kantode"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textColorHint="#6F6F6F"
+                    android:background="@drawable/edittext_bg"
+                    android:inputType="textPersonName"
+                    android:layout_marginTop="3dp"
+                    android:drawablePadding="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone Number"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:drawableLeft="@drawable/phone"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etRegistrationMobileNo"
+                    android:hint="+91 00000 00000"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:background="@drawable/edittext_bg"
+                    android:layout_marginTop="3dp"
+                    android:textColorHint="#6F6F6F"
+                    android:inputType="number"
+                    android:drawablePadding="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:drawableLeft="@drawable/email"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etRegistrationEmail"
+                    android:hint="student@university.edu.in"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textColorHint="#6F6F6F"
+                    android:background="@drawable/edittext_bg"
+                    android:layout_marginTop="3dp"
+                    android:inputType="textEmailAddress"
+                    android:drawablePadding="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:drawableLeft="@drawable/username"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etRegistrationUsername"
+                    android:hint="Username"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:background="@drawable/edittext_bg"
+                    android:layout_marginTop="3dp"
+                    android:textColorHint="#6F6F6F"
+                    android:inputType="textPersonName"
+                    android:drawablePadding="8dp"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Password"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:drawableLeft="@drawable/lock"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etRegistrationPassword"
+                    android:hint="Password"
+                    android:background="@drawable/edittext_bg"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:layout_marginTop="3dp"
+                    android:textColorHint="#6F6F6F"
+                    android:inputType="textPassword"
+                    android:drawableRight="@drawable/password_see"
+                    android:drawablePadding="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Confirm Password"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:drawableLeft="@drawable/password"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etRegistrationConfirmPassword"
+                    android:hint="Confirm Password"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:drawableRight="@drawable/password_see"
+                    android:background="@drawable/edittext_bg"
+                    android:layout_marginTop="15dp"
+                    android:textColorHint="#6F6F6F"
+                    android:inputType="textPassword"
+                    android:drawablePadding="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center"
+                    android:text="I agree to the Terms and Conditions"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="and Privacy Policy of EduVoice India."
+                    android:textColor="@color/black" />
+
+
+                <Button
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnRegistration"
+                    android:text="Sign Up"
+                    android:background="@drawable/progress"
+                    app:backgroundTint="@null"
+                    android:layout_marginTop="35dp"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#0D47A1"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Already have an account?"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_gravity="center"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Log In"
+                        android:textColor="#062AF6"
+                        android:id="@+id/tvLoginUser"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Fill in your details to get started with \nEduVoice."/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Full Name"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:drawableLeft="@drawable/person"/>
-
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="1dp"
-            android:hint="Full Name"
-            android:background="@drawable/edittext_bg"
-            android:inputType="textPersonName"
-            android:padding="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Phone Number"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:drawableLeft="@drawable/phone"/>
-
-
-        <EditText
-            android:id="@+id/etMobile"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:hint="Mobile Number"
-            android:background="@drawable/edittext_bg"
-            android:inputType="phone"
-            android:padding="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Email"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:drawableLeft="@drawable/email"
+            android:text="© 2024 EduVoice India. All rights reserved."
+            android:gravity="center"
+            android:textColor="#6F6F6F"
+            android:layout_marginTop="40dp"
             />
 
-        <EditText
-            android:id="@+id/etEmail"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="1dp"
-            android:hint="Email Address"
-            android:background="@drawable/edittext_bg"
-            android:inputType="textEmailAddress"
-            android:padding="15dp" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Username"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:drawableLeft="@drawable/username"/>
-
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/etRegistrationUsername"
-            android:hint="Username"
-            android:textColor="@color/black"
-            android:textSize="14dp"
-            android:background="@drawable/edittext_bg"
-            android:layout_marginTop="1dp"
-            android:textColorHint="#6F6F6F"
-            android:inputType="textPersonName"
-            android:drawablePadding="8dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Password"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:drawableLeft="@drawable/lock"/>
-
-
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="1dp"
-            android:textColor="@color/black"
-            android:drawableRight="@drawable/password_see"
-            android:hint="Password"
-            android:background="@drawable/edittext_bg"
-            android:inputType="textPassword"
-            android:padding="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Confirm Password"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:drawableLeft="@drawable/password"/>
-
-        <EditText
-            android:id="@+id/etConfirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:drawableRight="@drawable/password_see"
-            android:layout_marginTop="1dp"
-            android:hint="Confirm Password"
-            android:textColor="@color/black"
-            android:inputType="textPassword"
-            android:background="@drawable/edittext_bg"
-            android:padding="15dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:text="I am a:"
-            android:textColor="#263238"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <RadioGroup
-            android:id="@+id/rgRole"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/rbLearner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🎓 Learner" />
-
-            <RadioButton
-                android:id="@+id/rbVolunteer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:text="🤝 Volunteer" />
-        </RadioGroup>
-
-        <EditText
-            android:id="@+id/etCity"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:hint="City / Location"
-            android:inputType="text"
-            android:background="@drawable/edittext_bg"
-            android:padding="15dp" />
-
-        <CheckBox
-            android:id="@+id/cbTerms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="I agree to the Terms And Conditions" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnRegister"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:text="CREATE ACCOUNT"
-            android:textColor="@android:color/white"
-            android:background="@drawable/button_bg"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="Already have an account? Login"
-            android:textColor="#1565C0"
-            android:textSize="15sp" />
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Support"
+                android:textColor="#6F6F6F"
+                android:layout_marginLeft="45dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="University Partners"
+                android:textColor="#6F6F6F"
+                android:layout_marginLeft="35dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accessibility"
+                android:textColor="#6F6F6F"
+                android:layout_marginLeft="33dp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
-
 </ScrollView>
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/main"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".RegistrationActivity"-->
+<!--    android:background="@color/blue">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="24dp">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:src="@drawable/ic_education"-->
+<!--            android:contentDescription="EduReach Logo" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="EduReach"-->
+<!--            android:textColor="#1565C0"-->
+<!--            android:textSize="28sp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:text="Learn • Volunteer • Empower"-->
+<!--            android:textColor="#607D8B"-->
+<!--            android:textSize="14sp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:text="Create Account"-->
+<!--            android:textColor="#263238"-->
+<!--            android:textSize="24sp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:text="Fill in your details to get started with \nEduVoice."/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text=" Full Name"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="16sp"-->
+<!--            android:drawableLeft="@drawable/person"/>-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etRegistrationName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="1dp"-->
+<!--            android:hint="Full Name"-->
+<!--            android:background="@drawable/edittext_bg"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:padding="15dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Phone Number"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="16sp"-->
+<!--            android:drawableLeft="@drawable/phone"/>-->
+
+
+<!--        <EditText-->
+<!--            android:id="@+id/etRegistrationMobileNo"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:hint="Mobile Number"-->
+<!--            android:background="@drawable/edittext_bg"-->
+<!--            android:inputType="phone"-->
+<!--            android:padding="15dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text=" Email"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="16sp"-->
+<!--            android:drawableLeft="@drawable/email"-->
+<!--            />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etRegistrationEmail"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="1dp"-->
+<!--            android:hint="Email Address"-->
+<!--            android:background="@drawable/edittext_bg"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:padding="15dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Username"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="16sp"-->
+<!--            android:drawableLeft="@drawable/username"/>-->
+
+
+<!--        <EditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:id="@+id/etRegistrationUsername"-->
+<!--            android:hint="Username"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="14dp"-->
+<!--            android:background="@drawable/edittext_bg"-->
+<!--            android:layout_marginTop="1dp"-->
+<!--            android:textColorHint="#6F6F6F"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:drawablePadding="8dp"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Password"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="16sp"-->
+<!--            android:drawableLeft="@drawable/lock"/>-->
+
+
+<!--        <EditText-->
+<!--            android:id="@+id/etRegistrationPassword"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="1dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:drawableRight="@drawable/password_see"-->
+<!--            android:hint="Password"-->
+<!--            android:background="@drawable/edittext_bg"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:padding="15dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Confirm Password"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="16sp"-->
+<!--            android:drawableLeft="@drawable/password"/>-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etRegistrationConfirmPassword"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:drawableRight="@drawable/password_see"-->
+<!--            android:layout_marginTop="1dp"-->
+<!--            android:hint="Confirm Password"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:background="@drawable/edittext_bg"-->
+<!--            android:padding="15dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="18dp"-->
+<!--            android:text="I am a:"-->
+<!--            android:textColor="#263238"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <RadioGroup-->
+<!--            android:id="@+id/rgRole"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <RadioButton-->
+<!--                android:id="@+id/rbLearner"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="🎓 Learner" />-->
+
+<!--            <RadioButton-->
+<!--                android:id="@+id/rbVolunteer"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="25dp"-->
+<!--                android:text="🤝 Volunteer" />-->
+<!--        </RadioGroup>-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/etCity"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:hint="City / Location"-->
+<!--            android:inputType="text"-->
+<!--            android:background="@drawable/edittext_bg"-->
+<!--            android:padding="15dp" />-->
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/cbTerms"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:text="I agree to the Terms And Conditions" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/btnRegistration"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:text="CREATE ACCOUNT"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:background="@drawable/button_bg"-->
+<!--            android:textStyle="bold" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvLoginUser"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:text="Already have an account? Login"-->
+<!--            android:textColor="#1565C0"-->
+<!--            android:textSize="15sp" />-->
+
+<!--    </LinearLayout>-->
+
+<!--</ScrollView>-->
 
